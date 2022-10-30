@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MdSplit": {
+      "commandName": "Project",
+      "commandLineArgs": "--help"
+    }
+  }
+}

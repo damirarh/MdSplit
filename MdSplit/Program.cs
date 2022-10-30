@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using MdSplit;
+using Microsoft.Extensions.Hosting;
+
+Host.CreateDefaultBuilder()
+    .RunCommandLineApplicationAsync<AppCommand>(args);
