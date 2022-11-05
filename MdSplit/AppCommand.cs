@@ -15,11 +15,11 @@ public class AppCommand
     [Option(Description = "Required. The output directory.")]
     public string Output { get; set; } = null!;
 
-    public int OnExecute(IConsole console)
+    public async Task<int> OnExecuteAsync(IConsole console)
     {
         try
         {
-            var lines = File.ReadAllLines(this.Input);
+            var lines = await File.ReadAllLinesAsync(this.Input);
 
             string? filename = null;
             StringBuilder contents = new();
@@ -29,7 +29,7 @@ public class AppCommand
                 {
                     if (filename != null)
                     {
-                        File.WriteAllText(Path.Combine(this.Output, filename), contents.ToString());
+                        await File.WriteAllTextAsync(Path.Combine(this.Output, filename), contents.ToString());
                         contents.Clear();
                     }
                     filename = string.Concat(line.AsSpan(2), ".md");
@@ -41,7 +41,7 @@ public class AppCommand
             }
             if (filename != null)
             {
-                File.WriteAllText(Path.Combine(this.Output, filename), contents.ToString());
+                await File.WriteAllTextAsync(Path.Combine(this.Output, filename), contents.ToString());
             }
 
             return 0;

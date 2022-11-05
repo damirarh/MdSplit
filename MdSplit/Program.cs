@@ -1,5 +1,5 @@
 ﻿using MdSplit;
 using Microsoft.Extensions.Hosting;
 
-Host.CreateDefaultBuilder()
+await Host.CreateDefaultBuilder()
     .RunCommandLineApplicationAsync<AppCommand>(args);
